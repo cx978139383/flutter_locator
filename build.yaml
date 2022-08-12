@@ -1,0 +1,29 @@
+builders:
+  service_builder:
+    import: package:locator/src/builders/builders.dart
+    builder_factories:
+      - builderForService
+    build_extensions:
+      .dart:
+        - .service.registry.dart
+    auto_apply: dependents
+    runs_before:
+      - locator|locator_builder
+  event_builder:
+    import: package:locator/src/builders/builders.dart
+    builder_factories:
+      - builderForEvent
+    build_extensions:
+      .dart:
+        - .event.registry.dart
+    auto_apply: dependents
+    runs_before:
+      - locator|locator_builder
+  locator_builder:
+    import: package:locator/src/builders/builders.dart
+    builder_factories:
+      - builderForLocator
+    build_extensions:
+      .dart:
+        - .locator.registry.dart
+    build_to: source
